@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>任务代办</title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/myadmin.css"/>
+
+	</head>
+
+	<body>
+		<div class="wrap-container">
+			<div class="">
+				<div class="alltasks col-lg-9">
+					<div class="data-show">
+						<div class="layui-card layui-tab">
+							<div class="layui-card-header">进项税额转出列表</div>
+							<form class="layui-form">
+								<div class="demoTable task_con">
+									<div class="layui-inline">
+										<label class="layui-form-label">发票号码</label>
+										<div class="layui-input-inline">
+											<input type="text" name="invNo" lay-verify="required|number" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline">
+										<label class="layui-form-label">发票代码</label>
+										<div class="layui-input-inline">
+											<input type="text" name="invCode" lay-verify="required|number" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<button class="layui-btn" data-type="reload">查询</button>
+									<button class="layui-btn" data-type="reload">高级查询</button>
+								</div>
+							</form>
+							<div class="">
+								<div class="inside_head">
+									<button class="layui-btn" data-type="reload">Excel导出</button>
+								</div>
+								<table class="layui-hide" id="inputtax" lay-filter="user"></table> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/admin/js/alltasks.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

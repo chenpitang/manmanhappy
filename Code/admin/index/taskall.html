@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>所有影像任务</title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/iconfont.css">
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/viewer.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/myadmin.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/boxImg.css"/>
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+		<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+		<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="wrap-container">
+			<div class="">
+				<div class="alltasks col-lg-9">
+					<div class="data-show">
+						<div class="layui-tab layui-tab-card " lay-filter="tab1">
+						  <ul class="layui-tab-title">
+							<li class="layui-this">影像列表</li>
+							<li>任务内容</li>
+						  </ul>
+						  <div class="layui-tab-content" style="min-height: 100px;">
+						  
+							<div class="layui-tab-item  layui-show">
+								<!-- 查询表单 -->
+								<form class="layui-form">
+								<div class="demoTable task_con">
+									<div class="layui-inline">
+										<label class="layui-form-label">业务单号</label>
+										<div class="layui-input-inline">
+											<input type="text" name="a_classification" lay-verify="required|number" id="demoReload" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline">
+										<label class="layui-form-label">扫描日期</label>
+										<div class="layui-input-inline">
+											<input type="text" name="a_mentiont" id="a_mentiont" lay-verify="date" placeholder="扫描日期" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">任务分类</label>
+										  <div class="layui-input-inline">
+											<select name="a_classification" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">报账单业务</option>
+											  <option value="2">合同业务</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<label class="layui-form-label">企业主体</label>
+										<div class="layui-input-inline">
+											<input type="text" name="a_username" lay-verify="required|number" id="demoReload" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">封单状态</label>
+										  <div class="layui-input-inline">
+											<select name="a_seque" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">已封单</option>
+											  <option value="2">未封单</option>
+											  <option value="3">已解单</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">影像状态</label>
+										  <div class="layui-input-inline">
+											<select name="a_images" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">待采集</option>
+											  <option value="2">已采集</option>
+											  <option value="3">待重采</option>
+											  <option value="4">待补采</option>
+											  <option value="5">待作废</option>
+											  <option value="6">已作废</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">调阅审核</label>
+										  <div class="layui-input-inline">
+											<select name="a_examine" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">审核中</option>
+											  <option value="2">审核通过</option>
+											  <option value="3">审核不通过</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">任务创建方式</label>
+										  <div class="layui-input-inline">
+											<select name="a_source" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">手工创建</option>
+											  <option value="2">扫描客户端</option>
+											  <option value="3">QA</option>
+											  <option value="4">ERP</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">影像采集来源</label>
+										  <div class="layui-input-inline">
+											<select name="a_imgsource" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">扫描客户端</option>
+											  <option value="2">手机</option>
+											  <option value="3">人工上传</option>
+											  <option value="4">第三方系统</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<label class="layui-form-label">提单人编号</label>
+										<div class="layui-input-inline">
+											<input type="text" name="a_mentionn" lay-verify="required|number" id="demoReload" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<label class="layui-form-label">提单人</label>
+										<div class="layui-input-inline">
+											<input type="text" name="a_mention" lay-verify="required|number" id="demoReload" autocomplete="off" class="layui-input">
+										</div>
+									</div>
+									<div class="layui-inline imgshow_hide">
+										<div class="layui-form-item">
+										  <label class="layui-form-label">任务状态</label>
+										  <div class="layui-input-inline">
+											<select name="a_seque" lay-verify="required" lay-search="">
+											  <option value=""></option>
+											  <option value="1">已新建</option>
+											  <option value="2">已更新</option>
+											  <option value="3">作废中</option>
+											  <option value="4">已作废</option>
+											</select>
+										  </div>
+										</div>
+									</div>
+								</div>
+								</form> 
+								<button class="layui-btn img_search1" id="imgshow_hide">高级查询</button>
+								<button class="layui-btn img_search2" data-type="reload">查询</button>
+								<div class="clear"></div>
+								<table class="layui-hide" id="taskall" lay-filter="user"></table> 
+								
+							</div>  
+							
+							<div class="layui-tab-item isShow">
+								<!--四种模式切换-->
+								<div class="alltasks_tab">
+									<div class="alltasks_button layui-icon layui-icon-right"></div>
+									<ul>
+										<li class="on">图文模式</li>
+										<li>任务内容</li>
+										<li>图片模式</li>
+										<li>发票数据</li>
+									</ul>
+								</div>
+								<div class="alltasks_content">
+									<div class="alltasks_item" style="display: block;">
+										<!--模式一-->
+										<div class="layui-fluid">
+											<div class="layui-row layui-col-space15">
+												<div class="layui-col-md3">
+													<div class="layui-card">
+														<div class="layui-card-header">详情查看</div>
+														<div class="layui-card-body layui-form">
+
+															<table class="layui-table">
+																<colgroup>
+																	<col width="80">
+																	<col width="150">
+																</colgroup>
+																<tbody>
+																<tr>
+																	<td>业务单号：</td>
+																	<td>
+																		<input type="text" name="edocNo" id="edocNo" placeholder="" value="DD2018082000077" autocomplete="off" readonly class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>业务类型：</td>
+																	<td>
+																		<select name="bizTypeCode" id="bizTypeCode" disabled>
+																			<option value=""></option>
+																			<option value="0" selected>报账单业务</option>
+																			<option value="1">合同业务</option>
+																			<option value="2">押金条业务</option>
+																			<option value="3">销项发票业务</option>
+																			<option value="4">电子凭证业务</option>
+																			<option value="4">手工凭证业务</option>
+																		</select>
+																	</td>
+																</tr>
+																<tr>
+																	<td>单证类型：</td>
+																	<td>
+																		<select name="billTypeCode" id="billTypeCode">
+																			<option value=""></option>
+																			<option value="0" selected>机动车销售统一发票</option>
+																			<option value="1">附件</option>
+																			<option value="2">报账单封面</option>
+																			<option value="3">增值税电子普通发票</option>
+																			<option value="4">增值税专用发票</option>
+																		</select>
+																	</td>
+																</tr>
+																</tbody>
+															</table>
+															
+															<form class="layui-form">
+															<table class="layui-table">
+																<colgroup>
+																	<col width="80">
+																	<col width="150">
+																</colgroup>
+																<tbody>
+																<tr>
+																	<td>发票代码：</td>
+																	<td>
+																		<input type="text" name="invCode" id="invCode" placeholder="" value="1100162130" autocomplete="off" class="layui-input">
+																	</td>
+																</tr>
+																<tr>
+																	<td>发票号码：</td>
+																	<td>
+																		<input type="text" name="invNo" id="invNo" placeholder="" value="03387121" autocomplete="off" class="layui-input">
+																	</td>
+																</tr>
+																<tr>
+																	<td>发票日期：</td>
+																	<td>
+																		<input type="text" name="invDate" id="invDate" lay-verify="date" placeholder="" value="2017-05-05" autocomplete="off" class="layui-input">
+																	</td>
+																</tr>
+																<tr>
+																	<td>校验码（后六位）：</td>
+																	<td>
+																		<input type="text" name="checkcode" id="checkcode" placeholder="" value="038721" autocomplete="off" class="layui-input">
+																	</td>
+																</tr>
+																<tr>
+																	<td>购方名称：</td>
+																	<td>
+																		<input type="text" name="buyerName" id="buyerName" placeholder="北京奇付通科技有限公司" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>购方税号：</td>
+																	<td>
+																		<input type="text" name="buyerTaxCode" id="buyerTaxCode" placeholder="91110000590667306X" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>销方名称：</td>
+																	<td>
+																		<input type="text" name="salerName" id="salerName" placeholder="北京卡福尔科技有限公司" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>销方税号：</td>
+																	<td>
+																		<input type="text" name="salerTaxCode" id="salerTaxCode" placeholder="91110112567455954A" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>金额（不含税）：</td>
+																	<td>
+																		<input type="text" name="invAmount" id="invAmount" placeholder="" value="5582.83" autocomplete="off" class="layui-input">
+																	</td>
+																</tr>
+																<tr>
+																	<td>税额：</td>
+																	<td>
+																		<input type="text" name="invTax" id="invTax" placeholder="334.97" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>价税合计：</td>
+																	<td>
+																		<input type="text" name="invTotal" id="invTotal" placeholder="5917.80" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																<tr>
+																	<td>备注：</td>
+																	<td>
+																		<input type="text" name="remarks" id="remarks" placeholder="红豆沙就会打开手机啊" readonly autocomplete="off" class="layui-input readonly">
+																	</td>
+																</tr>
+																</tbody>
+															</table>
+															<button class="layui-btn pull-right" lay-submit="" lay-filter="demo1">提交</button>
+															<div class="clear"></div>
+															</form>
+														</div>
+													</div>
+												</div>
+												<div class="layui-col-md9">
+													<div class="layui-card">
+														<div class="layui-card-header">
+															影像查看
+														</div>
+														<div class="layui-card-body">
+															<div class="view-box">
+																<div class="view-body">
+																	<ul id="view" style="height: 600px;">
+																		<li style="position: absolute;z-index: -999;width: 100px;height: 100px;top: 0;left: 0;overflow: hidden"><img data-original="../../static/admin/images/1.jpg" src="../../static/admin/images/1.jpg" alt=""></li>
+																		<li style="position: absolute;z-index: -999;width: 100px;height: 100px;top: 0;left: 0;overflow: hidden"><img data-original="../../static/admin/images/2.jpg" src="../../static/admin/images/2.jpg" alt=""></li>
+																		<li style="position: absolute;z-index: -999;width: 100px;height: 100px;top: 0;left: 0;overflow: hidden"><img data-original="../../static/admin/images/3.jpg" src="../../static/admin/images/3.jpg" alt=""></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div style="background:#fff;">
+														<script type="text/html" id="tool_invItemDiv">
+															<div class="layui-btn-container">
+																<button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+															</div>
+														</script>
+														<table class="layui-hide" id="invItemDiv" lay-filter="invItemDiv"></table>
+														<script type="text/html" id="bar_invItemDiv">
+															<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+															<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+														</script>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="alltasks_item isShow" style="display: none;">
+										<!--模式二-->
+										<div class="layui-card">
+										<div class="layui-card-header">任务信息</div>
+										<form class="layui-form">
+											<div class="demoTable task_con">
+												<div class="layui-inline">
+													<label class="layui-form-label">任务分类</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_classification" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">业务单号</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_business" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">企业主体</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_username" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">封单状态</label>
+													  <div class="layui-input-inline">
+														<select name="a_seque" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">已封单</option>
+														  <option value="2">未封单</option>
+														  <option value="3">已解单</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">影像状态</label>
+													  <div class="layui-input-inline">
+														<select name="a_images" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">待采集</option>
+														  <option value="2">已采集</option>
+														  <option value="3">待重采</option>
+														  <option value="4">待补采</option>
+														  <option value="5">待作废</option>
+														  <option value="6">已作废</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">调阅审核</label>
+													  <div class="layui-input-inline">
+														<select name="a_examine" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">审核中</option>
+														  <option value="2">审核通过</option>
+														  <option value="3">审核不通过</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">任务创建方式</label>
+													  <div class="layui-input-inline">
+														<select name="a_source" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">手工创建</option>
+														  <option value="2">扫描客户端</option>
+														  <option value="3">OA</option>
+														  <option value="4">ERP</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">影像采集来源</label>
+													  <div class="layui-input-inline">
+														<select name="a_imgsource" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">扫描客户端</option>
+														  <option value="2">手机</option>
+														  <option value="3">人工上传</option>
+														  <option value="4">第三方系统</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">提单人编号</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_mentionn" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">提单人</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_mention" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">提单时间</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_mentiont" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="layui-inline">
+													<div class="layui-form-item">
+													  <label class="layui-form-label">任务状态</label>
+													  <div class="layui-input-inline">
+														<select name="a_state" lay-verify="required" lay-search="">
+														  <option value=""></option>
+														  <option value="1">已新建</option>
+														  <option value="2">已更新</option>
+														  <option value="3">作废中</option>
+														  <option value="4">已作废</option>
+														</select>
+													  </div>
+													</div>
+												</div>
+												<div class="layui-inline">
+													<label class="layui-form-label">备注</label>
+													<div class="layui-input-inline">
+														<input type="text" name="a_remarks" lay-verify="required|number" autocomplete="off" class="layui-input">
+													</div>
+												</div>
+												<div class="clear"></div>
+											</div>
+										</form> 
+										</div>
+										<div class="layui-card">
+											<div class="layui-card-header" style="margin-bottom:10px;">附件明细</div>
+											<script type="text/html" id="tool_image_task">
+												<div class="layui-btn-container">
+													<button class="layui-btn layui-btn-sm" lay-event="add">上传</button>
+													<button class="layui-btn layui-btn-sm" lay-event="del">删除</button>
+													<button class="layui-btn layui-btn-sm" lay-event="look">在线预览</button>
+												</div>
+											</script>
+											<table class="layui-hide" id="image_task" lay-filter="image_task"></table>
+										</div>
+									</div>
+									
+									<div class="alltasks_item image_pattern" style="display: none;">
+										<!--模式三-->
+										<div class="image_title">
+											<img modal="zoomImg" src="../../static/admin/images/1.jpg" height="150px" alt="">
+											<p>合同</p>
+										</div>
+										<div class="image_title">
+											<img modal="zoomImg" src="../../static/admin/images/2.jpg" height="150px" alt="">
+											<p>增值税专用发票</p>
+										</div>
+										<div class="image_title">
+											<img modal="zoomImg" src="../../static/admin/images/3.jpg" height="150px" alt="">
+											<p>增值税专用发票</p>
+										</div>
+										<div class="clear"></div>
+									</div>
+									
+									<div class="alltasks_item" style="display: none;">
+										<!--模式四-->
+										<div class="layui-card">
+											<div class="layui-card-header">发票数据</div>
+											<script type="text/html" id="tool_detailed_task">
+												<div class="layui-btn-container">
+													<button class="layui-btn layui-btn-sm" lay-event="look">验真</button>
+													<button class="layui-btn layui-btn-sm" lay-event="look">人工处理</button>
+												</div>
+											</script>
+											<table class="layui-hide" id="detailed_task" lay-filter="detailed_task"></table>
+										</div>
+									</div>
+									
+								</div>
+
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../static/admin/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/admin/js/viewer-jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="../../static/admin/js/boxImg.js" type="text/javascript" charset="utf-8"></script>
+	    <script>
+		
+            layui.use(['form','layer','jquery','element'], function(){
+                var layer 	= layui.layer;
+                var $=layui.jquery;
+                var form = layui.form;
+                var element = layui.element;
+                element.on('tab(tab1)', function(data){
+                    $("#view").load();
+
+
+                });
+
+
+
+            });
+
+			$(".isShow").show();
+			
+            var $image = $('#view');
+
+            $image.viewer({
+                inline: true,
+                zoomTo: 1
+
+            });
+			
+
+           $(".isShow").hide();
+			
+            function setImgStyle() {
+                var width = $(".viewer-container").width();
+                /*var height = width/1.57;*/
+                var height = width/1.72;
+                $(".viewer-container").height(height);
+                $("#view").height(height);
+            }
+
+            window.onresize = function(){
+                setImgStyle();
+            }
+
+			$(".alltasks_button").bind("click",function(){
+			    if($(this).hasClass("layui-icon-right")){
+                    $(this).removeClass("layui-icon-right");
+                    $(this).addClass("layui-icon-left");
+                    $(this).parents(".alltasks_tab").css("right","-150px");
+				}else{
+                    $(this).removeClass("layui-icon-left");
+                    $(this).addClass("layui-icon-right");
+                    $(this).parents(".alltasks_tab").css("right","0px");
+				}
+			});
+			// 模式切换点击事件
+            $(".alltasks_tab ul").on("click", "li", function(){
+                //tab切换
+                $(".alltasks_tab ul li").removeClass("on");
+                $(this).addClass("on");
+
+                //list切换
+                var index = $(".alltasks_tab ul li").index($(this));
+                $(".alltasks_content .alltasks_item").hide();
+                $(".alltasks_content .alltasks_item").eq(index).show();
+            });
+
+		</script>
+		<script src="../../static/admin/js/alltasks.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+
+</html>

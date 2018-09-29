@@ -1,0 +1,48 @@
+.layui-fluid{
+    padding: 15px;
+    background: #f2f2f2;
+}
+body{
+    background: #f2f2f2;
+}
+.layui-table td, .layui-table th{
+    padding: 7px 10px;
+}
+.readonly{
+    background: #f4f4f4 !important;
+}
+.layui-select-disabled input{
+    background: #f4f4f4 !important;
+    color: #333 !important;
+}
+.layui-select-disabled .layui-disabled{
+    border-color: #D2D2D2!important;
+}
+.layui-disabled, .layui-disabled:hover{
+    color: #333 !important;
+}
+.layui-tab-content{ min-height:600px !important;}
+.layui-input-inline{ float:left; margin-right: 10px;}
+.layui-form-label{ text-align: left; padding: 9px 0 9px 15px;}
+.alltasks .layui-form-item{ margin-bottom:0;}
+.layui-tab-card>.layui-tab-title{
+    background: none;
+}
+.data-show{
+    background: #fff;
+}
+
+.alltasks_tab{width: 150px;display: block;position: fixed;top: 40%;right: 0;border: 1px solid #dbdbdb;background: #fff;box-sizing: border-box;border-top-left-radius: 3px;border-bottom-left-radius: 3px;border-right: 0;transition: all 0.3s;padding: 10px 0;margin-top: -83px;z-index: 9999;}
+.alltasks_tab ul li{color: #666;text-align: center;line-height: 36px;cursor: pointer;transition: all 0.3s;}
+
+.alltasks_tab ul li.on{background:#f2f2f2; }
+.alltasks_tab ul li:hover{background:#f2f2f2;}
+.alltasks_button{position: absolute;width: 20px;background: #fff;left: -21px;top: 50%;border: 1px solid #dbdbdb;border-right: 0;height: 40px;border-top-left-radius: 80%;border-bottom-left-radius: 80%;color: #999;margin-top: -20px;cursor: pointer;}
+.alltasks_button:before{top:11px;position: absolute;left: 2px;}
+.pull-right{ float:right;}
+.clear{ clear:both;}
+.detail_invoice th{ text-align:right; background:rgba(0,0,0,0.06);}
+.detail_image img{ max-width:1021.1px;}
+.detail_invoice2 th{ text-align:center; background:rgba(0,0,0,0.06);}
+.detail_invoice2 td{ text-align:center;}
+.imgshow_hide{ display:none;}
